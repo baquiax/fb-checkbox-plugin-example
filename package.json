@@ -1,0 +1,24 @@
+{
+  "name": "fb-checkbox-plugin-example",
+  "version": "1.0.0",
+  "description": "FB checkbox plugin example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baquiax/fb-checkbox-plugin-example.git"
+  },
+  "keywords": [
+    "fb",
+    "checkbox-plugin"
+  ],
+  "author": "@baquiax",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/baquiax/fb-checkbox-plugin-example/issues"
+  },
+  "homepage": "https://github.com/baquiax/fb-checkbox-plugin-example#readme"
+}
