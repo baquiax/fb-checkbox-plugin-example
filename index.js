@@ -13,7 +13,7 @@ fs.readFile('./index.html', (error, content) => {
     response.writeHead(200, {
       'Content-type': 'text/html',
     })
-    const uid = new Date().getTime()
+    const uid = `ref_${new Date().getTime()}`
     const replaced = html
       .replace(/\{uid\}/g, uid)
       .replace(/\{appId\}/g, appId)
