@@ -1,0 +1,72 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <div>Hello! This is a checkbox plugin of Facebook</div>
+
+  <div class="fb-messenger-checkbox" origin="{origin}" page_id="{pageId}" messenger_app_id="{appId}"
+    user_ref="{uid}" allow_login="true" size="xlarge">
+  </div>
+
+  <input type="button" onclick="confirmOptIn()" value="Confirm Opt-in" />
+
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '{appId}',
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v2.12'
+      });
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '{appId}',
+        xfbml: true,
+        version: 'v2.6'
+      });
+
+      FB.Event.subscribe('messenger_checkbox', function (e) {
+        console.log("messenger_checkbox event");
+        console.log(e);
+
+        if (e.event == 'rendered') {
+          console.log("Plugin was rendered");
+        } else if (e.event == 'checkbox') {
+          var checkboxState = e.state;
+          console.log("Checkbox state: " + checkboxState);
+        } else if (e.event == 'not_you') {
+          console.log("User clicked 'not you'");
+        } else if (e.event == 'hidden') {
+          console.log("Plugin was hidden");
+        }
+      });
+    }; 
+  </script>
+
+  <script>
+    function confirmOptIn() {
+      FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
+        'app_id': '{appId}',
+        'page_id': '{pageId}',
+        'user_ref': '{uid}'
+      });
+    }
+  </script>
+</body>
+
+</html>
