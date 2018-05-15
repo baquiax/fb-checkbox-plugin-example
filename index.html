@@ -5,13 +5,15 @@
 </head>
 
 <body>
-  <div>Hello! This is a checkbox plugin of Facebook</div>
-
+  <h3>Hello! This is a checkbox plugin of Facebook</h3><br/>
+  <div>
+    <label>Send extra data (ref)</label> <input id="extra-data" size=120 value="key1:valu1e,key2:value2,action:test"/><br/>
+  </div>
   <div class="fb-messenger-checkbox" origin="{origin}" page_id="{pageId}" messenger_app_id="{appId}"
     user_ref="{uid}" allow_login="true" size="xlarge">
   </div>
 
-  <input type="button" onclick="confirmOptIn()" value="Confirm Opt-in" />
+  <br/><input type="button" onclick="confirmOptIn()" value="Confirm Opt-in" />
 
   <script>
     window.fbAsyncInit = function () {
@@ -60,11 +62,17 @@
 
   <script>
     function confirmOptIn() {
+      console.log({
+        'app_id': '{appId}',
+        'page_id': '{pageId}',
+        'user_ref': '{uid}',
+        'ref': document.getElementById('extra-data').value
+      })
       FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
         'app_id': '{appId}',
         'page_id': '{pageId}',
         'user_ref': '{uid}',
-        'ref': 'key1:valu1e,key2:value2,action:test'
+        'ref': document.getElementById('extra-data').value
       });
       window.location.reload()
     }
